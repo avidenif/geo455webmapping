@@ -1,15 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1 class="title">Hello World</h1>
-        <div id="mainDiv">Hello Div</div>
-        <br />
-        <button onclick="buttonClicked()">Click me</button>
-    </body>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEO 455 - Lab 1</title>
+
+  <style>
+    body { font-family: "Just Another Hand", cursive, sans-serif; margin: 0; line-height: 1.5; font-size: x-large }
+    header, main, footer { max-width: 900px; margin: 0 auto; padding: 16px; }
+    nav a { margin-right: 12px; }
+    .hero { background: #f3f3f3; border-radius: 12px; padding: 16px; }
+    .center { text-align: center; }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+
+<body style="background-color:#77d2f8;">
+  <header>
+    <h1 class="center">Avi Fleury</h1>
+    <p class="center">GEO 455 • Web Mapping • Spring 20XX</p>
+
+    <nav class="center">
+      <a href="#about">About</a>
+      <a href="#books">Books</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="about" style="background-color:rgba(255, 244, 254, 0.83);">
+      <h2>About me</h2>
+      <p>Hi! I’m a Geography major interested in GIS and Sustainbility.</p>
+
+      <!-- IMAGE TEMPLATE (required) -->
+      <figure>
+        <!-- If this file is in an images/ folder next to this HTML file, use: images/profile.jpg -->
+        <!-- If this HTML file is inside a labs/ folder, use: ../images/profile.jpg -->
+        <img src="images/B51DFC52-15D6-4B35-87C1-8324058F5880.JPG" alt="Photo of Me" width="320">
+        <figcaption>Figure 1. This is me at Grandad Bluff in La Crosse.</figcaption>
+      </figure>
+    </section>
+
+    <section id="books">
+      <h2>Books I recently read</h2>
+      <ul>
+        <li><a href="https://yalebooks.yale.edu/book/9780300190380/wilderness-and-the-american-mind/">Wilderness and the American Mind</a></li>
+        <li><a href="https://us.macmillan.com/books/9781250132147/thehourofland/">The Hour of Land</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:fleury1861@uwlax.edu?subject=GEO%20455%20Webmapping">Email me</a>
+        • <a href="https://github.com/avidenif">GitHub</a>
+      </p>
+    </section>
+  </main>
+
+<footer class="center">
+    <small><a href="../index.html">Back to main page</a></small>
+  </footer>
+</body>
 </html>
