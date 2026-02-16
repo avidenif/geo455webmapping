@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>ex3-02</title>
+    </head>
+<body>
+
+
+    <h2>JavaScript Arrays</h2>
+
+    <p id="arr"></p>
+    <p id="arr_ind"></p>
+    <p id="arr_multd"></p>
+    <p id="arr_multd_ind"></p>
+    <p id="person_obj"></p>
+    <p id="person_obj1"></p>
+
+
+    <script>
+        var a= [2, 2.5, 4, 3.5];
+        document.getElementById("arr").innerHTML = "This is a simple array: "+ a;
+        document.getElementById("arr_ind").innerHTML = "This is the 2nd element in the above array: "+ a[1];
+        
+
+        var d = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+        document.getElementById("arr_multd").innerHTML = "This is a multi-dimensional array: "+ d;
+        document.getElementById("arr_multd_ind").innerHTML = "This is first item in the 2nd element in a multi-dimensional array: "+ d[1][0];
+    
+        
+        // Create an object:
+        var person = {
+            firstName: "Johnny",
+            lastName: "Edward",
+            age: 21,
+            eyeColor: "brown",
+        };
+        
+        document.getElementById("person_obj").innerHTML = person.firstName + " has " + person.eyeColor + " eyes.";
+        
+        document.getElementById("person_obj1").innerHTML = person.firstName + " has the last name of " + person.lastName + ". ";
+
+
+    </script>
+    <br>
+    <footer> 
+        <a href="ex_03_03_functions.html">Go to next page</a> <br><br>
+        
+        <a href="geo455_ex3.html">Back to Exercise 3</a>
+    </footer>
+    
+</body>
+</html>

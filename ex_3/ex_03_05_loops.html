@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>ex3-05</title>
+    </head>
+<body>
+
+<h2>JavaScript For Loop</h2>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+    var num = "";
+    
+    for (var i = 1; i < 10; i++) {
+        num += "The number is " + i + "<br>";
+    }
+    document.getElementById("demo").innerHTML = num;
+    
+    var num_brk = "";
+    
+    for (var z = 1; z < 16; z++) {
+        if(z===13) {break;}
+        num_brk += "The number is " + z + ", lets loop again." + "<br>";
+    }
+    document.getElementById("demo1").innerHTML = num_brk;
+    
+    
+    var cats = ["Milo", "Beano", "Moe", "Hazel", "Gram", "Beano"];
+    
+    var catnames = "";
+    
+    for (var j = 0; j < cats.length; j++) {
+        catnames += cats[j] + "<br>";
+    }
+    document.getElementById("demo2").innerHTML = catnames;
+
+</script>
+<br>
+    <footer> 
+        <a href="ex_3_06_objects_properties.html">Go to next page</a> <br><br>
+        
+        <a href="geo455_ex3.html">Back to Exercise 3</a>
+    </footer>
+
+</body>
+</html>
