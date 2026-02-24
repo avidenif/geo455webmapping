@@ -147,7 +147,7 @@ var ryo = L.marker([35.03441524, 135.718258], {icon: myIcon7}).bindPopup("<b>Ryo
 
 var kink = L.marker([35.03913986, 135.7294278], {icon: myIcon8}).bindPopup("<b>Kinkaku-ji Temple</b>").addTo(map);
 
-var san = L.marker([34.98787571, 135.7726085], {icon: myIcon9}).bindPopup("<b>Sanjusangen-do Temple</b>").addTo(map)();
+var san = L.marker([34.98787571, 135.7726085], {icon: myIcon9}).bindPopup("<b>Sanjusangen-do Temple</b>").addTo(map);
 
 var kiyo = L.marker([34.99470136, 135.7846717], {icon: myIcon10}).bindPopup("<b>Kiyomizu-dera Temple</b>").addTo(map);
 
