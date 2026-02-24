@@ -37,8 +37,8 @@ body {
 #description {
   position: fixed;
   left: 10px;
-  bottom: 20px;
-  width: 320px;
+  bottom: 80px;
+  width: 300px;
   max-width: calc(100vw - 20px);
   padding: 0 10px;
   background: rgba(168, 209, 255, 0.89);
@@ -48,7 +48,7 @@ body {
 }
 /*Make paragraph text inside the description readable */
 #description p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.4;
 }
 #description h2 {
@@ -66,12 +66,16 @@ body {
 }
 
 #footer {
-clear: both;
-    letter-spacing: .04em;
-    height: 25px;
-    background-color: rgba(99, 200, 228, 0.5);
-    border: 1px solid grey;
-    text-align: center;
-    padding-top: 3px;
-    font-style: italic;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(168, 209, 255, 0.89);
+  color: #777;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #777;
+  border-radius: 20px;
+  z-index: 1000;
 }
