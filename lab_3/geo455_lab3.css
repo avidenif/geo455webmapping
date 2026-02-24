@@ -79,3 +79,9 @@ body {
   border-radius: 20px;
   z-index: 1000;
 }
+.popup img {
+  width: 180px;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 6px;
+}

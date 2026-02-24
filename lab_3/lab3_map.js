@@ -131,39 +131,165 @@ var myIcon18 = L.icon({
     popupAnchor: [0, -28],
 });
 
-var nar = L.marker([35.77077873, 140.3842401], {icon: myIcon1}).bindPopup("<b>Narita</b>").addTo(map);
+var nar = L.marker([35.77077873, 140.3842401], {icon: myIcon1})
+  .bindPopup(`
+    <div class="popup">
+      <b>Narita</b><br>
+      <img src="images/img1.jpg" alt="Narita">
+    </div>
+  `)
+  .addTo(map);
 
-var toko = L.marker([34.85273235, 136.8099447], {icon: myIcon2}).bindPopup("<b>Tokoname</b>").addTo(map);
+var toko = L.marker([34.85273235, 136.8099447], {icon: myIcon2})
+  .bindPopup(`
+    <div class="popup">
+      <b>Tokoname</b><br>
+      <img src="images/img2.jpg" alt="Tokoname">
+    </div>
+  `)
+  .addTo(map);
 
-var nag = L.marker([35.1662323, 136.8753928], {icon: myIcon3}).bindPopup("<b>Nagoya</b>").addTo(map);
+var nag = L.marker([35.1662323, 136.8753928], {icon: myIcon3})
+  .bindPopup(`
+    <div class="popup">
+      <b>Nagoya</b><br>
+      <img src="images/img3.jpg" alt="Nagoya">
+    </div>
+  `)
+  .addTo(map);
 
-var naga = L.marker([35.17497721, 137.0881761], {icon: myIcon4}).bindPopup("<b>Nagakute</b>").addTo(map);
+var naga = L.marker([35.17497721, 137.0881761], {icon: myIcon4})
+  .bindPopup(`
+    <div class="popup">
+      <b>Nagakute</b><br>
+      <img src="images/img4.jpg" alt="Nagakute">
+    </div>
+  `)
+  .addTo(map);
 
-var shib = L.marker([35.66839767, 139.7055835], {icon: myIcon5}).bindPopup("<b>Shibuya and Takeshita Shopping Street</b>").addTo(map);
+var shib = L.marker([35.66839767, 139.7055835], {icon: myIcon5})
+  .bindPopup(`
+    <div class="popup">
+      <b>Shibuya and Takeshita Shopping Street</b><br>
+      <img src="images/img5.jpg" alt="Shibuya and Takeshita Shopping Street">
+    </div>
+  `)
+  .addTo(map);
 
-var tok = L.marker([35.67977261, 139.7756025], {icon: myIcon6}).bindPopup("<b>Tokyo</b>").addTo(map);
+var tok = L.marker([35.67977261, 139.7756025], {icon: myIcon6})
+  .bindPopup(`
+    <div class="popup">
+      <b>Tokyo</b><br>
+      <img src="images/img7.jpg" alt="Tokyo">
+    </div>
+  `)
+  .addTo(map);
 
-var ryo = L.marker([35.03441524, 135.718258], {icon: myIcon7}).bindPopup("<b>Ryoanji Temple</b>").addTo(map);
+var ryo = L.marker([35.03441524, 135.718258], {icon: myIcon7})
+  .bindPopup(`
+    <div class="popup">
+      <b>Ryoanji Temple</b><br>
+      <img src="images/img8.jpg" alt="Ryoanji Temple">
+    </div>
+  `)
+  .addTo(map);
 
-var kink = L.marker([35.03913986, 135.7294278], {icon: myIcon8}).bindPopup("<b>Kinkaku-ji Temple</b>").addTo(map);
+var kink = L.marker([35.03913986, 135.7294278], {icon: myIcon8})
+  .bindPopup(`
+    <div class="popup">
+      <b>Kinkaku-ji Temple</b><br>
+      <img src="images/img9.jpg" alt="Kinkaku-ji Temple">
+    </div>
+  `)
+  .addTo(map);
 
-var san = L.marker([34.98787571, 135.7726085], {icon: myIcon9}).bindPopup("<b>Sanjusangen-do Temple</b>").addTo(map);
+var san = L.marker([34.98787571, 135.7726085], {icon: myIcon9})
+  .bindPopup(`
+    <div class="popup">
+      <b>Sanjusangen-do Temple</b><br>
+      <img src="images/img10.jpg" alt="Sanjusangen-do Temple">
+    </div>
+  `)
+  .addTo(map);
 
-var kiyo = L.marker([34.99470136, 135.7846717], {icon: myIcon10}).bindPopup("<b>Kiyomizu-dera Temple</b>").addTo(map);
+var kiyo = L.marker([34.99470136, 135.7846717], {icon: myIcon10})
+  .bindPopup(`
+    <div class="popup">
+      <b>Kiyomizu-dera Temple</b><br>
+      <img src="images/img11.jpg" alt="Kiyomizu-dera Temple">
+    </div>
+  `)
+  .addTo(map);
 
-var sen = L.marker([34.96695777, 135.7746412], {icon: myIcon11}).bindPopup("<b>Senbon Tori Gates, Fukakusa Yabunouchicho</b>").addTo(map);
+var sen = L.marker([34.96695777, 135.7746412], {icon: myIcon11})
+  .bindPopup(`
+    <div class="popup">
+      <b>Senbon Tori Gates, Fukakusa Yabunouchicho</b><br>
+      <img src="images/img12.jpg" alt="Senbon Tori Gates, Fukakusa Yabunouchicho">
+    </div>
+  `)
+  .addTo(map);
 
-var osu = L.marker([35.15961026, 136.8994454], {icon: myIcon12}).bindPopup("<b>Osu Kannon Temple and Osu Shopping Street</b>").addTo(map);
+var osu = L.marker([35.15961026, 136.8994454], {icon: myIcon12})
+  .bindPopup(`
+    <div class="popup">
+      <b>Osu Kannon Temple and Osu Shopping Street</b><br>
+      <img src="images/img13.jpg" alt="Osu Kannon Temple and Osu Shopping Street">
+    </div>
+  `)
+  .addTo(map);
 
-var atsu = L.marker([35.1272877, 136.9086787], {icon: myIcon13}).bindPopup("<b>Atsuta-jingu Shrine</b>").addTo(map);
+var atsu = L.marker([35.1272877, 136.9086787], {icon: myIcon13})
+  .bindPopup(`
+    <div class="popup">
+      <b>Atsuta-jingu Shrine</b><br>
+      <img src="images/img14.jpg" alt="Atsuta-jingu Shrine">
+    </div>
+  `)
+  .addTo(map);
 
-var nara = L.marker([34.68493231, 135.8430925], {icon: myIcon14}).bindPopup("<b>Nara Park</b>").addTo(map);
+var nara = L.marker([34.68493231, 135.8430925], {icon: myIcon14})
+  .bindPopup(`
+    <div class="popup">
+      <b>Nara Park</b><br>
+      <img src="images/img15.jpg" alt="Nara Park">
+    </div>
+  `)
+  .addTo(map);
 
-var kofu = L.marker([34.68312523, 135.8312769], {icon: myIcon15}).bindPopup("<b>Kōfuku-ji Temple</b>").addTo(map);
+var kofu = L.marker([34.68312523, 135.8312769], {icon: myIcon15})
+  .bindPopup(`
+    <div class="popup">
+      <b>Kōfuku-ji Temple</b><br>
+      <img src="images/img16.jpg" alt="Kōfuku-ji Temple">
+    </div>
+  `)
+  .addTo(map);
 
-var kasu = L.marker([34.681466, 135.8484773], {icon: myIcon16}).bindPopup("<b>Kasugataisha Shrine</b>").addTo(map);
+var kasu = L.marker([34.681466, 135.8484773], {icon: myIcon16})
+  .bindPopup(`
+    <div class="popup">
+      <b>Kasugataisha Shrine</b><br>
+      <img src="images/img17.jpg" alt="Kasugataisha Shrine">
+    </div>
+  `)
+  .addTo(map);
 
-var cast = L.marker([35.18468872, 136.8996722], {icon: myIcon17}).bindPopup("<b>Nagoya Castle</b>").addTo(map);
+var cast = L.marker([35.18468872, 136.8996722], {icon: myIcon17})
+  .bindPopup(`
+    <div class="popup">
+      <b>Nagoya Castle</b><br>
+      <img src="images/img18.jpg" alt="Nagoya Castle">
+    </div>
+  `)
+  .addTo(map);
 
-var kiyosu = L.marker([35.21413037, 136.8343211], {icon: myIcon18}).bindPopup("<b>Kiyosu</b>").addTo(map);
+var kiyosu = L.marker([35.21413037, 136.8343211], {icon: myIcon18})
+  .bindPopup(`
+    <div class="popup">
+      <b>Kiyosu</b><br>
+      <img src="images/img19.jpg" alt="Kiyosu">
+    </div>
+  `)
+  .addTo(map);
 
