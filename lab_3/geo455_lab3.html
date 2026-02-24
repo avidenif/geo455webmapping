@@ -1,15 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1 class="title">Hello World</h1>
-        <div id="mainDiv">Hello Div</div>
-        <br />
-        <button onclick="buttonClicked()">Click me</button>
-    </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEO 455: Lab 3</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  
+  <!-- Make sure you put the leaflet map library AFTER Leaflet's CSS --> 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!--Your choice of Google fonts- make sure to update in CSS file -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="geo455_lab3.css" />
+</head>
+<body>
+
+
+  <div id="map"></div>
+  <h1 id="title">Lab 3: My Trip to Japan!</h1>
+  <div id="description">
+  <h2>These are the places I went during my trip to Japan this winter, in chronological order!</h2>
+  <p> 1. Narita
+  <br>2. Tokoname
+  <br>3. Nagoya
+  <br>4. Nagakute
+  <br>5. Shibuya and Takeshita Shopping Street
+  <br>6. Tokyo
+  <br>7. Ryoanji Temple
+  <br>8. Kinkaku-ji Temple
+  <br>9. Sanjusangen-do Temple
+  <br>10. Kiyomizu-dera Temple
+  <br>11. Senbon Tori Gates, Fukakusa Yabunouchicho
+  <br>12. Osu Kannon Temple and Osu Shopping Street
+  <br>13. Atsuta-jingu Shrine
+  <br>14. Nara Park
+  <br>15. Kōfuku-ji Temple
+  <br>16. Kasugataisha Shrine
+  <br>17. Nagoya Castle
+  <br>18. Kiyosu
+       <br><br><img src="images/IMG_2447.jpeg" alt= " Photo of Me in Tokyo " width="200">
+       <br> Figure 1. This is me in Tokyo, Japan!
+     </p>
+    <p>Map authored by Avi Fleury.</p> <!-- Replace with your name-->
+  </div>
+    <!-- Your map code  -->
+  <script src="lab3_map.js"></script>
+</body>
 </html>
