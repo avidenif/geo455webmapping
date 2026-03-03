@@ -1,0 +1,74 @@
+
+body {
+  margin: 0;
+  background-color: whitesmoke;
+  font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+  color: #303030;
+}
+
+#map {
+  position: fixed;
+  inset: 0;
+  z-index: 0; 
+}
+
+.custom .leaflet-popup-content-wrapper {
+    background: #195b87;
+    color: #ffffff;
+}
+
+#title {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  font-size: 2em;
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: .04em;
+  margin: 0 auto;
+  padding: 10px 15px;
+  background: rgba(117, 189, 147, 0.9);
+  border: 1px solid #385e32;
+  border-radius: 10px;
+  z-index: 800;
+}
+
+#description {
+  position: fixed;
+  left: 10px;
+  bottom: 50px;
+  width: 300px;
+  max-width: calc(100vw - 20px);
+  padding: 0 10px;
+  background: rgba(117, 189, 147, 0.9);
+  border: 1px solid #385e32;
+  border-radius: 10px;
+  z-index: 800;
+}
+/*Make paragraph text inside the description readable */
+#description p {
+  font-size: 0.96rem;
+  line-height: 1.4;
+}
+#description h2 {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+/*Style links inside the description (and hover effect)*/
+#description a {
+  color: #792dcb;
+  text-decoration: none;
+}
+
+#description a:hover {
+  text-decoration: underline;
+}
+
+.popup img {
+  width: 180px;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 6px;
+}
