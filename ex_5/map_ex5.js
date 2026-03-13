@@ -1,15 +1,9 @@
-/* I added one extra plug in, I unfortunately could not find a second plug in that worked.
- * The plug in I added is a coordinate plug in called Leflet.Coordinates.
- * I chose this plug in because it shows the coordinates of whatever area you click on with your mouse.
- * You can then copy these coordinates if needed.
- * I only added JS code at the bottom of this page, it did not need an HTML CSS.
- * To test it, you click anywhere on the map with your mouse.
- * I was unable to find another plug in that worked with my map.
+/* I was unable to find a plug in that worked with my map.
  * I would add the HTML links, and the JS code, but it would not show up on my map and I tried for hours.
  * I asked a friend as well and tried her plug ins, and it still did not work.
- * I tried fullscreen plug ins, measurement plug ins, minimap plug ins, amd more.
+ * I tried fullscreen plug ins, measurement plug ins, minimap plug ins, and more.
  * Since I try to avoid using ChatGPT I decided to leave it with only one plug in.
- * This was the only plug in I tried that worked. If I had more time, I would keep troubleshooting.
+ * If I had more time, I would keep troubleshooting.
  */
 
 var streets = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
