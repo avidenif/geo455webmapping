@@ -30,7 +30,7 @@ var miniMap = new L.Control.MiniMap(miniLayer, {
 var homeCenter = map.getCenter();
 var homeZoom = map.getZoom();
 
-L.easyButton(('<img src="images/Home_icon_black.png", height=70%>'), function () {
+L.easyButton(('<img src="images/globe_icon.png", height=70%>'), function () {
   map.setView(homeCenter, homeZoom);
 }, "Home").addTo(map);
 
@@ -38,7 +38,8 @@ L.easyButton(('<img src="images/Home_icon_black.png", height=70%>'), function ()
 fetch("data/us_reservation_boundaries.geojson")
   .then(response => response.json())
   .then(data => {
-    L.geoJSON(data, {
+
+    var reservationsLayer = L.geoJSON(data, {
       style: {
         color: "brown",
         weight: 1,
@@ -61,29 +62,28 @@ fetch("data/us_reservation_boundaries.geojson")
         }
       }
     }).addTo(map);
-  });
 
 // Custom Pop-ups with Images
 
-var mesaverdePopup = "Mesa Verde National Park, Colorado<br/><img src='' alt='' width='150px'/>";
+var mesaverdePopup = "Mesa Verde National Park, Colorado<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cliff_Palace-Colorado-Mesa_Verde_NP.jpg/1920px-Cliff_Palace-Colorado-Mesa_Verde_NP.jpg' alt='mesa verde wiki' width='150px'/>";
 
-var casagrandePopup = "Casa Grande Ruins National Monument, Arizona<br/><img src='' alt='' width='150px'/>";
+var casagrandePopup = "Casa Grande Ruins National Monument, Arizona<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CasaGrandeRuin.jpg/1280px-CasaGrandeRuin.jpg' alt='case grande wiki' width='150px'/>";
 
-var organPopup = "Organ Mountains-Desert Peaks National Monument, New Mexico<br/><img src='' alt='' width='150px'/>";
+var organPopup = "Organ Mountains-Desert Peaks National Monument, New Mexico<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg/1280px-Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg' alt='organ wiki' width='150px'/>";
 
-var effigyPopup = "Effigy Mounds National Monument, Iowa<br/><img src='' alt='' width='150px'/>";
+var effigyPopup = "Effigy Mounds National Monument, Iowa<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Big_bear_mound_at_Effigy_Mounds_State_Park.jpg/1280px-Big_bear_mound_at_Effigy_Mounds_State_Park.jpg' alt='effigy wiki' width='150px'/>";
 
-var chacoPopup = "Chaco Culture National Historical Park<br/><img src='' alt='christ wiki' width='150px'/>";
+var chacoPopup = "Chaco Culture National Historical Park<br/><img src='https://upload.wikimedia.org/wikipedia/commons/4/48/Chaco_Culture_NHP_%288023723138%29.jpg' alt='chaco wiki' width='150px'/>";
 
-var hopewellPopup = "Hopewell Culture National Historical Park, Ohio<br/><img src='' alt='' width='150px'/>";
+var hopewellPopup = "Hopewell Culture National Historical Park, Ohio<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Hopewell_Culture_National_Historical_Park.jpg/1280px-Hopewell_Culture_National_Historical_Park.jpg' alt='hopewell wiki' width='150px'/>";
 
-var canyonsPopup = "Canyons of the Ancients National Monument, Colorado<br/><img src='' alt='' width='150px'/>";
+var canyonsPopup = "Canyons of the Ancients National Monument, Colorado<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg/1280px-My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg' alt='canyons wiki' width='150px'/>";
 
-var aztecPopup = "Aztec Ruins National Monument, New Mexico<br/><img src='' alt='' width='150px'/>";
+var aztecPopup = "Aztec Ruins National Monument, New Mexico<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Aztec_Ruins_National_Monument_by_RO.JPG/1280px-Aztec_Ruins_National_Monument_by_RO.JPG' alt='aztec wiki' width='150px'/>";
 
-var ocumulgeePopup = "Ocmulgee National Monument, Georgia<br/><img src='' alt='' width='150px'/>";
+var ocumulgeePopup = "Ocmulgee National Monument, Georgia<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Mounds_at_Ocmulgee_National_Monument%2C_Bibb_County%2C_GA%2C_US.jpg/1920px-Mounds_at_Ocmulgee_National_Monument%2C_Bibb_County%2C_GA%2C_US.jpg' alt='ocmulgee wiki' width='150px'/>";
 
-var gilaPopup = "Gila Cliff Dwellings National Monument, New Mexico<br/><img src='' alt='' width='150px'/>";
+var gilaPopup = "Gila Cliff Dwellings National Monument, New Mexico<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg/1920px-Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg' alt='gila wiki' width='150px'/>";
 
 var customOptions ={'maxWidth': '150','className' : 'custom'};
 
@@ -131,8 +131,10 @@ var baseLayers = {
     'Satellite Imagery': imagery,
     };
 
-var overlays = {
-  "Historical Sites": marks,
-};
+    var overlays = {
+      "Historical Sites": marks,
+      "Reservations": reservationsLayer
+    };
 
-var layerControl = L.control.layers(baseLayers, overlays, {collapsed: true}).addTo(map);
+    L.control.layers(baseLayers, overlays, {collapsed: true}).addTo(map);
+  });
