@@ -84,6 +84,9 @@ fetch("data/us_reservation_boundaries.geojson")
       }
     }).addTo(map);
 
+  // chorpleth data
+
+  
     // Popups
     var mesaverdePopup = "Mesa Verde National Park<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cliff_Palace-Colorado-Mesa_Verde_NP.jpg/1920px-Cliff_Palace-Colorado-Mesa_Verde_NP.jpg' width='150px'/>";
     var casagrandePopup = "Casa Grande Ruins<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CasaGrandeRuin.jpg/1280px-CasaGrandeRuin.jpg' width='150px'/>";
