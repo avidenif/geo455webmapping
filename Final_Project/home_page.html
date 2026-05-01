@@ -1,56 +1,191 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GEO 455 - Final Project About Me</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About This Map | GEO 455 Final Project</title>
 
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: "Rubik", sans-serif; margin: 0; line-height: 1.5; font-size: medium}
-    header, main, footer { max-width: 900px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; }
-    .hero { background: #f3f3f3; border-radius: 12px; padding: 16px; }
-    .center { text-align: center; }
-    img { max-width: 100%; height: auto; }
+    body {
+      background-color: #d7e0e8;
+    font-family: "Gelasio", serif;
+    }
+
+    .content-card {
+      max-width: 1000px;
+      margin: 30px auto;
+    }
+    
+    .card-body {
+      padding: 0.5rem 1rem;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    .section-title {
+      border-left: 5px solid #2f39b7;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
+
+    .small-note {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
-<body style="background-color:rgba(225, 197, 181, 0.75);">
-  <header>
-    <h1 class="center">Final Project: About Me</h1>
-    <p class="center">GEO 455 • Web Mapping • Spring 2026 • Avi Fleury</p>
-  </header>
+<body>
 
-  <main>
-    <section class="hero" id="about" style="background-color:rgba(203, 170, 144, 0.83);">
-      <h2>About Me</h2>
-      <p><strong>Introduction:</strong> This map visualizes Indegenous territory, historical sites, and population in the United States. This map is intended to educate individuals on the native populations in the United States. It is important to understand where and how we can support native people.</p>
-      <p><strong>Data + Methodology:</strong> Data is linked in the references page. Reservation polygons were taken from American Conservation and Stewardship Atlas (cleaned in ArcGIS and exported to geojson), historical site locations from google maps with the help of an article published by The Wilderness Society, and all Native population data will be taken from U.S. Census data for 2024 (cleaned in ArcGIS and exported to geojson).</p>
-      <p><strong>Project summary:</strong> Map is not finished, needs some fine tuning and I need to finish the population layer and chart. There has been some difficulty troubleshooting it. These need to be finalized along with final aesthetic details. For final submission, I need to finish the population layer and chart, and make the website more appealing to the eye.</p>
-    </section>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+  <div class="container-fluid">
+    <span class="navbar-brand fw-semibold">
+      About the Map – Final Project
+    </span>
+    <span class="fw-semibold">GEO 455 • Web Mapping • Spring 2026 • Avi Fleury</span>
+  </div>
+</nav>
 
-    <section id="books">
-      <h2>Links:</h2>
-      <ul>
-        <li><a href="final_project.html">Final Project Map</a></li>
-        <li><a href="references.html">Data Sources/References</a></li>
-      </ul>
-    </section>
+<!-- Main content -->
+<div class="container content-card">
 
-    <section id="contact">
-      <h2>Contact</h2>
+  <!-- Introduction -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">What is this map?</h2>
+
+      <h5>Background</h5>
       <p>
-        <a href="mailto:fleury1861@uwlax.edu?subject=GEO%20455%20Webmapping">Email me</a>
-        • <a href="https://github.com/avidenif">GitHub</a>
+        blah
       </p>
-    </section>
-  </main>
 
-<footer class="center">
-    <small><a href="../index.html">Back to main page</a></small>
-  </footer>
+      <h5>Objective</h5>
+      <p>
+        blah
+      </p>
+
+      <h5>Audience</h5>
+      <p>
+        blah
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Interactions -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">How to use this map:</h2>
+
+      <h5>Map Interactivity</h5>
+
+      <ul>
+        <li><strong>Basemap toggle:</strong> blah.</li>
+        <li><strong>Home button:</strong> blah.</li>
+        <li><strong>Popups:</strong> blah.</li>
+        <li><strong>Thematic layers:</strong> blah.</li>
+        <li><strong>Search tool:</strong> blah.</li>
+        <li><strong>Choropleth:</strong> blah</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- Data -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">Data Sources and Methodology</h2>
+
+      <h5>Data sources</h5>
+      <ul>
+        <li>blah</li>
+        <li>blah</li>
+        <li>balh</li>
+        <li>blah</li>
+        <li>blah</li>
+      </ul>
+
+      <h5>Data processing</h5>
+      <ol>
+        <li>blah</li>
+        <li>blah</li>
+        <li>blah</li>
+        <li>blah</li>
+        <li>blah</li>
+      </ol>
+      
+      <!-- Workflow Diagram -->
+
+      <h5>Web delivery methods</h5>
+      <ol>
+        <li>blah</li>
+        <li>blah</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+      <h2 class="section-title">Limitations</h2>
+
+      <ul>
+        <li>blah</li>
+        <li>blah</li>
+        <li>blah</li>
+        <li>blah</li>
+      </ul>
+    </div>
+  </div>
+    
+    <div class="card shadow-sm mb-4">
+  <div class="card-body">
+
+    <h2 class="section-title">Map Credits</h2>
+
+    <p>
+      This web map was created as part of GEO 455: Web Mapping at the University of Wisconsin–La Crosse.
+    </p>
+
+    <ul>
+      <li><strong>Map Author:</strong> <a href="../index.html">Avi Fleury</a></li>
+      <li><strong>Course:</strong> GEO 455 – Web Mapping</li>
+      <li><strong>Institution:</strong> University of Wisconsin–La Crosse</li>
+      <li><strong>Basemap Attribution:</strong> blah</li>
+    </ul>
+
+  </div>
+</div>
+    
+<!-- Back button -->
+    <a href="final_project.html" class="btn btn-primary w-100 mt-4">
+      Back to Map
+      </a>
+</div>
+
 </body>
 </html>

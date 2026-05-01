@@ -14,8 +14,8 @@ var imagery = L.tileLayer(
 );
 
 var map = L.map("map", {
-  center: [39.67293206761876, -97.40217044408527],
-  zoom: 4,
+  center: [34.87455588323924, -108.12716074650054],
+  zoom: 6,
   layers: streets
 });
 
@@ -47,7 +47,7 @@ disclaimerControl.onAdd = function (map) {
   div.innerHTML = "Disclaimer";
 
   div.onclick = function () {
-    alert("Insert disclaimer here.");
+    alert("I want to honor the sovereignty of all Indegenous nations, their lands, and their waters. The boundaries, territories, and historical sites on this map are sacred. This map is for informational purposes only, please respect the rights of Indegenous data sovereignty.");
   };
 
   return div;
@@ -55,8 +55,109 @@ disclaimerControl.onAdd = function (map) {
 
 disclaimerControl.addTo(map);
 
+// CHORPLETH
+var Percentlayer; 
+
+fetch("data/sw_native_population.geojson")
+  .then(response => response.json())
+  .then(percentData => {
+
+    console.log("Choropleth loaded:", percentData);
+
+    Percentlayer = L.geoJSON(percentData, {
+      style: stylePercent,
+      onEachFeature: onEachPercentFeature
+    });
+
+  })
+  .catch(error => console.error("Error loading choropleth:", error));
+
+// colors
+function getColorPercent(value) {
+    return value > 32.6 ? '#08519c':
+           value > 16  ? '#3182bd':
+           value > 7.4  ? '#6baed6':
+           value > 2.5  ? '#bdd7e7':
+                         '#eff3ff';
+}
+
+function stylePercent(feature){
+    return {
+        fillColor: getColorPercent(feature.properties.native_census_Native_Prt),   
+        weight: 2,
+        opacity: 1,
+        color: 'gray',
+        fillOpacity: 0.9
+    };
+} 
+
+// highlight function
+function highlightFeature(e) {
+    var layer = e.target;
+  layer.setStyle({
+        weight: 5,
+        color: '#666',
+        fillOpacity: 0.7
+    });
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToFront();
+  }
+}
+
+// reset function
+function resetPercentHighlight(e) {
+  Percentlayer.resetStyle(e.target);
+  e.target.closePopup();
+}
+
+// interaction functions
+function onEachPercentFeature(feature, layer) {
+  layer.bindPopup(
+    '<strong>' + feature.properties.cb_2025_us_county_500k_NAME + '</strong><br>' +
+    '<strong>' + feature.properties.cb_2025_us_county_500k_STATE_NAME + '</strong><br>' +
+    '<span style="color:red">' + feature.properties.native_census_Native_Prt + ' %</span>'
+  );
+
+  layer.on({
+    mouseover: function (e) {
+      highlightFeature(e);
+      e.target.openPopup();
+    },
+    mouseout: resetPercentHighlight
+  });
+}
+
+
+// build legends in side panel
+
+function buildLegendHTML(title, grades, colorFunction) {
+  var html = '<div class="legend-title">' + title + '</div>';
+  
+  for (var i = 0; i < grades.length; i++) {
+    var from = grades[i];
+    var to = grades[i + 1];
+    
+    html +=
+      '<div class="legend-box">' +
+        '<span class="legend-color" style="background:' + colorFunction(from + 1) + '"></span>' +
+        '<span>' + from + (to ? '&ndash;' + to : '+') + '</span>' +
+      '</div>';
+  }
+  return html;
+}
+
+// insert Percent legend
+var PercentLegendDiv = document.getElementById('Percent-legend');
+if (PercentLegendDiv) {
+  PercentLegendDiv.innerHTML = buildLegendHTML(
+    'Population %',
+    [0, 2.5, 7.4, 16, 32.6],
+    getColorPercent
+  );
+}
+
 // DATA
-fetch("data/us_reservation_boundaries.geojson")
+fetch("data/southwest_reservations.geojson")
   .then(response => response.json())
   .then(data => {
 
@@ -83,20 +184,14 @@ fetch("data/us_reservation_boundaries.geojson")
         }
       }
     }).addTo(map);
-
-  // chorpleth data
-
   
     // Popups
     var mesaverdePopup = "Mesa Verde National Park<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cliff_Palace-Colorado-Mesa_Verde_NP.jpg/1920px-Cliff_Palace-Colorado-Mesa_Verde_NP.jpg' width='150px'/>";
     var casagrandePopup = "Casa Grande Ruins<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CasaGrandeRuin.jpg/1280px-CasaGrandeRuin.jpg' width='150px'/>";
     var organPopup = "Organ Mountains<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg/1280px-Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg' width='150px'/>";
-    var effigyPopup = "Effigy Mounds<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Big_bear_mound_at_Effigy_Mounds_State_Park.jpg/1280px-Big_bear_mound_at_Effigy_Mounds_State_Park.jpg' width='150px'/>";
     var chacoPopup = "Chaco Culture<br/><img src='https://upload.wikimedia.org/wikipedia/commons/4/48/Chaco_Culture_NHP_%288023723138%29.jpg' width='150px'/>";
-    var hopewellPopup = "Hopewell Culture<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Hopewell_Culture_National_Historical_Park.jpg/1280px-Hopewell_Culture_National_Historical_Park.jpg' width='150px'/>";
     var canyonsPopup = "Canyons of the Ancients<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg/1280px-My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg' width='150px'/>";
     var aztecPopup = "Aztec Ruins<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Aztec_Ruins_National_Monument_by_RO.JPG/1280px-Aztec_Ruins_National_Monument_by_RO.JPG' width='150px'/>";
-    var ocmulgeePopup = "Ocmulgee<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Mounds_at_Ocmulgee_National_Monument%2C_Bibb_County%2C_GA%2C_US.jpg/1920px-Mounds_at_Ocmulgee_National_Monument%2C_Bibb_County%2C_GA%2C_US.jpg' width='150px'/>";
     var gilaPopup = "Gila Cliff Dwellings<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg/1920px-Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg' width='150px'/>";
 
     var customOptions = { maxWidth: 150 };
@@ -107,12 +202,9 @@ fetch("data/us_reservation_boundaries.geojson")
       { name: "Mesa Verde", coords: [37.23, -108.46], popupHtml: mesaverdePopup },
       { name: "Casa Grande", coords: [32.99, -111.53], popupHtml: casagrandePopup },
       { name: "Organ Mountains", coords: [32.32, -106.57], popupHtml: organPopup },
-      { name: "Effigy Mounds", coords: [43.08, -91.18], popupHtml: effigyPopup },
       { name: "Chaco", coords: [36.05, -107.95], popupHtml: chacoPopup },
-      { name: "Hopewell", coords: [39.37, -83.00], popupHtml: hopewellPopup },
       { name: "Canyons", coords: [37.48, -108.88], popupHtml: canyonsPopup },
       { name: "Aztec Ruins", coords: [36.83, -107.99], popupHtml: aztecPopup },
-      { name: "Ocmulgee", coords: [32.83, -83.60], popupHtml: ocmulgeePopup },
       { name: "Gila Cliff", coords: [33.22, -108.27], popupHtml: gilaPopup }
     ];
 
@@ -141,10 +233,10 @@ fetch("data/us_reservation_boundaries.geojson")
     // search
     var searchControl = new L.Control.Search({
       position: 'topright',
-      layer: marks,
-      propertyName: 'title',
+      layer: Percentlayer,
+      propertyName: 'cb_2025_us_county_500k_NAME',
       marker: false,
-      textPlaceholder: 'Search by name of historical site',  
+      textPlaceholder: 'Search by name of county',  
       moveToLocation: function (latlng, title, map) {
         map.setView(latlng, 15);
       }
@@ -157,11 +249,19 @@ fetch("data/us_reservation_boundaries.geojson")
       'Satellite Imagery': imagery
     };
 
-    var overlays = {
-      "Historical Sites": marks,
-      "Reservations": reservationsLayer
-    };
+var overlays = {
+  "Historical Sites": marks,
+  "Reservations": reservationsLayer
+};
+
+if (Percentlayer) {
+  overlays["Population Percent"] = Percentlayer;
+}
 
     L.control.layers(baseLayers, overlays, { collapsed: true }).addTo(map);
 
   });
+
+window.addEventListener("resize", function () {
+  map.invalidateSize();
+});

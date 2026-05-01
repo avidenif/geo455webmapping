@@ -20,6 +20,8 @@
    <!-- easy button -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+  
+  <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
    
   <!-- MiniMap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.css">
@@ -28,11 +30,13 @@
    <!--Google fonts- make sure to update in CSS file -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-   
+  <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  
    <!-- CSS -->
    <link rel="stylesheet" href="final_project.css">
-   
+  
+   <!-- DATA -->
+  <script src="native_population.js"></script>
 
 </head>
    
@@ -41,22 +45,21 @@
   <!-- Top bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
     <div class="container-fluid">
-      <span class="navbar-brand fw-semibold">Visualizaton of Native Tribal Areas in the United States</span>
-      <span class="fw-semibold">GEO 455: Webmapping</span>
+      <span class="navbar-brand fw-semibold">Visualizaton of Native Tribal Areas and Population in the Southwest United States</span>
+      <span class="fw-semibold">GEO 455 • Web Mapping • Spring 2026 • Avi Fleury</span>
     </div>
   </nav>
 
 <div class="container-fluid">
   <div class="row g-3 py-3">
 
-    <!-- Map column -->
-    <div class="col-lg-10">
-      <div class="card shadow-sm">
-        <div class="card-body p-0">
-          <div id="map"></div>
-        </div>
-      </div>
+<div class="col-lg-10">
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <div id="map"></div>
     </div>
+  </div>
+</div>
 
     <!-- Info/Legend column -->
     <div class="col-lg-2">
@@ -65,9 +68,11 @@
           <h5 class="card-title mb-3">Map Layers and Controls</h5>
           <p><strong>Red Polygons:</strong> Land area of federally-recognized tribes (2022).</p>
           <p><strong>Blue Pin Points:</strong> Popular native historical sites.</p>
-          <p><strong>Choropleth:</strong> Choropleth layer showing percent of Native Population per county (2024). (still working on this layer)</p>
-          <p><strong>Population Decrease Chart:</strong> (unfinished)</p>
+          <p><strong>Choropleth:</strong> Choropleth layer showing percent of Native Population per county (2024).</p>
           <hr>
+            <h6 class="fw-semibold">Legend</h6>
+            <div id="legend-panel" class="small"></div>
+<div id="Percent-legend" class="small mb-3"></div>
           <div><small><a href="references.html">Data Sources/References</a></small></div>
           <div><small><a href="home_page.html">Back to home page.</a></small></div>
         </div>
@@ -75,8 +80,8 @@
     </div>
 
   </div>
-</div>
   <!-- Your JS -->
   <script src="final_project.js"></script>
+  </div>
 </body>
 </html>
