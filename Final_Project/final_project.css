@@ -73,3 +73,11 @@ html, body {
   color: #666;
   margin-bottom: 8px;
 }
+
+.leaflet-popup-content-wrapper {
+  background: #7a97c2;
+  color: white;
+}
+.leaflet-popup-tip {
+  background: #7a97c2;
+}

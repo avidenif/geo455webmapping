@@ -68,6 +68,11 @@ fetch("data/sw_native_population.geojson")
       style: stylePercent,
       onEachFeature: onEachPercentFeature
     });
+  
+Percentlayer.addTo(map);
+
+    overlays["Population Percent"] = Percentlayer;
+    layerControl.addOverlay(Percentlayer, "Population Percent");
 
   })
   .catch(error => console.error("Error loading choropleth:", error));
@@ -84,10 +89,10 @@ function getColorPercent(value) {
 function stylePercent(feature){
     return {
         fillColor: getColorPercent(feature.properties.native_census_Native_Prt),   
-        weight: 2,
+        weight: 1,
         opacity: 1,
         color: 'gray',
-        fillOpacity: 0.9
+        fillOpacity: 0.7
     };
 } 
 
@@ -95,9 +100,9 @@ function stylePercent(feature){
 function highlightFeature(e) {
     var layer = e.target;
   layer.setStyle({
-        weight: 5,
+        weight: 2,
         color: '#666',
-        fillOpacity: 0.7
+        fillOpacity: 0.4
     });
   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
     layer.bringToFront();
@@ -165,7 +170,7 @@ fetch("data/southwest_reservations.geojson")
       style: {
         color: "brown",
         weight: 1,
-        fillOpacity: 0.3
+        fillOpacity: 0.4
       },
       onEachFeature: function (feature, layer) {
 
