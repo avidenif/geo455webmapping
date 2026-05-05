@@ -76,17 +76,17 @@
 
       <h5>Problem</h5>
       <p>
-        Since the 1800s, Native Americans in the United States have been relocated and removed from their homes and their lands. Today, you can still see evidence of the displacement that occured.
+        Since the 1800s, Native Americans in the United States have been relocated and removed from their homes and their lands. Today, you can still see evidence of the displacement that occured. The Southwestern part of the United States is where many Indegenous people call home.
       </p>
 
       <h5>Objective</h5>
       <p>
-        This map is designed to highlight how population, historical sites, and current reservations show displacement and change in how land has been recognized in the Southwestern United States. Some historical sites are located outside of current reservations and in some areas population is high without reservation boundaries. This shows that less land is recognized as native than it should be.
+        This map is designed to highlight how population, historical sites, current reservations, and boarding schools show displacement of Indegenous people and change in how land has been recognized in the Southwestern United States. Some historical sites are located outside of current reservations and in some areas population is high without reservation boundaries. This shows that less land is recognized as native than it should be. Boarding school points provide visualization of how many boarding schools were created and how many still exist today.
       </p>
 
       <h5>Audience</h5>
       <p>
-        Individuals who may not know much about Native Populations in the United States.
+        Individuals who may not know much about Native populations and history in the United States, specifically the Southwest. 
       </p>
 
     </div>
@@ -124,11 +124,12 @@
         <li><strong>Historical sites: </strong><a href="https://www.wilderness.org/articles/article/10-extraordinary-native-american-cultural-sites-protected-public-lands#">10 extraordinary Native American cultural sites protected on public lands</a></li>
         <li><strong>Reservation polygons (2022): </strong><a href="https://www.conservation.gov/datasets/245ffcb63a0b44cb9ed467bbd5f9d7ea_0/about">US Domestic Sovereign Nations: Land Areas of Federally-Recognized Tribes (BIA)</a></li>
         <li><strong>Population Choropleth (2024): </strong><a href="https://data.census.gov/table/ACSDP1Y2024.DP05?t=American+Indian+and+Alaska+Native&g=010XX00US$0500000">DPO5 ACS Demographic and Housing Estimates</a></li>
+        <li><strong>Boarding Schools: </strong><a href="https://www.arcgis.com/home/item.html?id=5a915a899ac64b1bae52a41dd4c8b0fd">NCTR-NABS Interactive Map by NAB</a></li>
       </ul>
 
       <h5>Data processing</h5>
       <ol>
-        <li>Download shapefiles into ArcGIS Pro</li>
+        <li>Download shapefiles into ArcGIS Pro (within the case of the boarding schools, I had to convert geojson to shapefile using QGIS beforehand)</li>
         <li>Simplify/clean data fields and/or polygons</li>
         <li>Project to proper projection</li>
         <li>Filter to study area if needed</li>
@@ -144,7 +145,7 @@
 
       <h5>Web delivery methods</h5>
       <ol>
-        <li>GeoJSON</li>
+        <li>GeoJSON (fetched in Pheonix Code)</li>
       </ol>
 
     </div>
@@ -158,9 +159,7 @@
 
       <ul>
         <li>Reservation data did not include newly recognized reservations in Oklahoma.</li>
-        <li>Wanted to compare population to data in the 1950s, but could not find data.</li>
-        <li>blah</li>
-        <li>blah</li>
+        <li>Wanted to compare population to data in the 1950s, but could not find census data before 2010.</li>
       </ul>
     </div>
   </div>
@@ -178,7 +177,8 @@
       <li><strong>Map Author:</strong> <a href="../index.html">Avi Fleury</a></li>
       <li><strong>Course:</strong> GEO 455 – Web Mapping</li>
       <li><strong>Institution:</strong> University of Wisconsin–La Crosse</li>
-      <li><strong>Basemap Attribution:</strong> blah</li>
+      <li><strong>Use of AI:</strong> ChatGPT and Codex were used ONLY for finding data and fixing broken code.</li>
+      <li><strong>Softwares used:</strong> Pheonix Code, QGIS, and ArcGIS.</li>
     </ul>
 
   </div>

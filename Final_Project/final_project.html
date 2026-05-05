@@ -4,82 +4,105 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Final Project</title>
-  
+
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- leaflet -->
+
+  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-   
-   <!--- searchbox package -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.css" integrity="sha512-1TnOnmQ91QV8X1/dj6UMPhRM35nAnBanyvXPFU7uqV3xg+++cGxIBR6Bh5D7F8wVrwNm8eAfBWNYX/4yce4CiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js" integrity="sha512-erNK0f3PSiL/SdS247MoOAK95iJCmfueXT4WG5eyRBR1eOgcE0bI5y2fSEVTQfAS53pTqL/VIQpJXnG99U1n+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
-   
-   <!-- easy button -->
+
+  <!-- Searchbox package -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.css" integrity="sha512-1TnOnmQ91QV8X1/dj6UMPhRM35nAnBanyvXPFU7uqV3xg+++cGxIBR6Bh5D7F8wVrwNm8eAfBWNYX/4yce4CiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js" integrity="sha512-erNK0f3PSiL/SdS247MoOAK95iJCmfueXT4WG5eyRBR1eOgcE0bI5y2fSEVTQfAS53pTqL/VIQpJXnG99U1n+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Easy Button -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
-  
+
+  <!-- Heatmap -->
   <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
-   
+
   <!-- MiniMap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/leaflet-minimap@3.3.1/dist/Control.MiniMap.min.js"></script>
-   
-   <!--Google fonts- make sure to update in CSS file -->
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-  
-   <!-- CSS -->
-   <link rel="stylesheet" href="final_project.css">
 
-
+  <!-- CSS -->
+  <link rel="stylesheet" href="final_project.css">
 </head>
-   
+
 <body class="bg-light">
 
   <!-- Top bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
     <div class="container-fluid">
-      <span class="navbar-brand fw-semibold">Visualizaton of Native Tribal Areas and Population in the Southwest United States</span>
-      <span class="fw-semibold">GEO 455 • Web Mapping • Spring 2026 • Avi Fleury</span>
+      <span class="navbar-brand fw-semibold">
+        Visualization of Indigenous Past and Present in the Southwestern United States
+      </span>
+      <span class="fw-semibold">
+        GEO 455 • Web Mapping • Spring 2026 • Avi Fleury
+      </span>
     </div>
   </nav>
 
-<div class="container-fluid">
-  <div class="row g-3 py-3">
+  <div class="container-fluid py-3">
+    <div class="row g-3">
 
-<div class="col-lg-10">
-  <div class="card shadow-sm">
-    <div class="card-body p-0">
-      <div id="map"></div>
-    </div>
-  </div>
-</div>
+      <!-- Map column -->
+      <div class="col-lg-10">
+        <div id="map"></div>
+      </div>
 
-    <!-- Info/Legend column -->
-    <div class="col-lg-2">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title mb-3">Map Layers and Controls</h5>
-          <p><strong>Red Polygons:</strong> Land area of federally-recognized tribes (2022).</p>
-          <p><strong>Blue Pin Points:</strong> Popular native historical sites.</p>
-          <p><strong>Choropleth:</strong> Choropleth layer showing percent of Native Population per county (2024).</p>
-          <hr>
-            <h6 class="fw-semibold">Legend</h6>
+      <!-- Info/Legend column -->
+      <div class="col-lg-2">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-2">Map Layers and Controls</h5>
+
+            <p><strong>Red Polygons:</strong> Land area of federally-recognized tribes (2022).</p>
+
+            <p><strong>Blue Pin Points:</strong> Popular Native historical sites.</p>
+
+            <p><strong>Choropleth:</strong> Choropleth layer showing percent of Native Population per county (2024).</p>
+
+            <p><strong>Boarding Schools:</strong> Layer showing Indigenous boarding schools throughout history in Southwest United States (2024).</p>
+
+            <ul>
+              <li>
+                <small>
+                  To implement cultural genocide, between 1869 and the 1960s, children were abducted and brought to these schools miles away from their homes and families. They were abused and mistreated. These schools were operated by federal governments or churches. Today, many of the schools that remain open instead focus on cultural support, community, and celebration. <a href="https://boardingschoolhealing.org/">Click here more information on Native Boarding School Healing.</a>
+                </small>
+              </li>
+            </ul>
+
+            <hr>
+
+            <h6 class="fw-semibold">Population Legend</h6>
             <div id="legend-panel" class="small"></div>
-<div id="Percent-legend" class="small mb-3"></div>
-          <div><small><a href="references.html">Data Sources/References</a></small></div>
-          <div><small><a href="home_page.html">Back to home page.</a></small></div>
+            <div id="Percent-legend" class="small mb-3"></div>
+
+            <div>
+              <small><a href="references.html">Data Sources/References</a></small>
+            </div>
+
+            <div>
+              <small><a href="home_page.html">Back to home page.</a></small>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
+
   <!-- Your JS -->
   <script src="final_project.js"></script>
-  </div>
+
 </body>
 </html>
