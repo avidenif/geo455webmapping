@@ -79,9 +79,54 @@ html, body {
 }
 
 .leaflet-popup-content-wrapper {
-  background: #7a97c2;
-  color: white;
+  background: #f7f3ec;
+  color: #2f2f2f;
 }
+
 .leaflet-popup-tip {
-  background: #7a97c2;
+  background: #f7f3ec;
+}
+
+.leaflet-popup-content strong {
+  color: #7a2f23;
+}
+
+.leaflet-popup-content img {
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.leaflet-control-layers label span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.toggle-symbol {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 6px 0 6px;
+  vertical-align: middle;
+  border: 1px solid #555;
+}
+
+.toggle-blue-box {
+  background: #3182bd;
+}
+
+.toggle-red-box {
+  background: #b22222;
+}
+
+.toggle-icon {
+  width: 16px;
+  height: 16px;
+  margin: 0 6px 0 6px;
+  vertical-align: middle;
+}
+
+.historical-excerpt {
+  margin: 6px 0;
+  line-height: 1.35;
+  font-size: 13px;
 }

@@ -19,6 +19,7 @@ var map = L.map("map", {
   layers: [streets]
 });
 
+// layer toggle
 var baseLayers = {
   "Streetmap": streets,
   "Satellite Imagery": imagery
@@ -29,6 +30,10 @@ var overlays = {};
 var layerControl = L.control.layers(baseLayers, overlays, {
   collapsed: true
 }).addTo(map);
+
+function layerLabel(symbolClass, text) {
+  return '<span class="' + symbolClass + '"></span>' + text;
+}
 
 // MiniMap basemap
 var miniLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -81,7 +86,10 @@ fetch("data/sw_native_population.geojson")
       onEachFeature: onEachPercentFeature
     }).addTo(map);
 
-    layerControl.addOverlay(Percentlayer, "Population Percent");
+    layerControl.addOverlay(
+      Percentlayer,
+      layerLabel("toggle-symbol toggle-blue-box", "Population Percent")
+    );
 
     var searchControl = new L.Control.Search({
       position: "topright",
@@ -207,42 +215,92 @@ fetch("data/southwest_reservations.geojson")
       }
     }).addTo(map);
 
-    layerControl.addOverlay(reservationsLayer, "Reservations");
+    layerControl.addOverlay(
+      reservationsLayer,
+      layerLabel("toggle-symbol toggle-red-box", "Reservations")
+    );
   })
   .catch(error => console.error("Error loading reservations:", error));
 
 // historical sites
-var mesaverdePopup = "Mesa Verde National Park<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cliff_Palace-Colorado-Mesa_Verde_NP.jpg/1920px-Cliff_Palace-Colorado-Mesa_Verde_NP.jpg' width='150px'/>";
-var casagrandePopup = "Casa Grande Ruins<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CasaGrandeRuin.jpg/1280px-CasaGrandeRuin.jpg' width='150px'/>";
-var organPopup = "Organ Mountains<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg/1280px-Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg' width='150px'/>";
-var chacoPopup = "Chaco Culture<br/><img src='https://upload.wikimedia.org/wikipedia/commons/4/48/Chaco_Culture_NHP_%288023723138%29.jpg' width='150px'/>";
-var canyonsPopup = "Canyons of the Ancients<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg/1280px-My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg' width='150px'/>";
-var aztecPopup = "Aztec Ruins<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Aztec_Ruins_National_Monument_by_RO.JPG/1280px-Aztec_Ruins_National_Monument_by_RO.JPG' width='150px'/>";
-var gilaPopup = "Gila Cliff Dwellings<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg/1920px-Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg' width='150px'/>";
-
-var customOptions = { maxWidth: 150 };
+var customOptions = { maxWidth: 190 };
 
 var marks = L.layerGroup().addTo(map);
 
 var sites = [
-  { name: "Mesa Verde", coords: [37.23, -108.46], popupHtml: mesaverdePopup },
-  { name: "Casa Grande", coords: [32.99, -111.53], popupHtml: casagrandePopup },
-  { name: "Organ Mountains", coords: [32.32, -106.57], popupHtml: organPopup },
-  { name: "Chaco", coords: [36.05, -107.95], popupHtml: chacoPopup },
-  { name: "Canyons", coords: [37.48, -108.88], popupHtml: canyonsPopup },
-  { name: "Aztec Ruins", coords: [36.83, -107.99], popupHtml: aztecPopup },
-  { name: "Gila Cliff", coords: [33.22, -108.27], popupHtml: gilaPopup }
+  {
+    name: "Mesa Verde",
+    coords: [37.23, -108.46],
+    excerpt: "Mesa Verde is a World Heritage Site protecting Ancestral Puebloan sites.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cliff_Palace-Colorado-Mesa_Verde_NP.jpg/1920px-Cliff_Palace-Colorado-Mesa_Verde_NP.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Mesa_Verde_National_Park"
+  },
+  {
+    name: "Casa Grande",
+    coords: [32.99, -111.53],
+    excerpt: "This is a national monument preserving Hohokam structures.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CasaGrandeRuin.jpg/1280px-CasaGrandeRuin.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Casa_Grande_Ruins_National_Monument"
+  },
+  {
+    name: "Organ Mountains",
+    coords: [32.32, -106.57],
+    excerpt: "The Organ Mountains-Desert Peaks is a national monument, protecting cultural and archaeological sites, including some of the earliest Native American settlements and petroglyphs in the US.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg/1280px-Organ_Mountains-Desert_Peaks_National_Monument_%2817717943249%29.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Organ_Mountains%E2%80%93Desert_Peaks_National_Monument"
+  },
+  {
+    name: "Chaco",
+    coords: [36.05, -107.95],
+    excerpt: "Chaco Culture is a National Park connected to Ancestral Pueblo communities.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Chaco_Culture_NHP_%288023723138%29.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Chaco_Culture_National_Historical_Park"
+  },
+  {
+    name: "Canyons",
+    coords: [37.48, -108.88],
+    excerpt: "Canyons of the Ancients is a National Monument with many archaeological sites, primarily Ancestral Puebloan ruins.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg/1280px-My_Public_Lands_Roadtrip-_Canyons_of_the_Ancients_National_Monument_in_Colorado_%2819773890122%29.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Canyons_of_the_Ancients_National_Monument"
+  },
+  {
+    name: "Aztec Ruins",
+    coords: [36.83, -107.99],
+    excerpt: "Aztec Ruins is a National Monument protecting Ancestral Pueblo structures.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Aztec_Ruins_National_Monument_by_RO.JPG/1280px-Aztec_Ruins_National_Monument_by_RO.JPG",
+    wiki: "https://en.wikipedia.org/wiki/Aztec_Ruins_National_Monument"
+  },
+  {
+    name: "Gila Cliff",
+    coords: [33.22, -108.27],
+    excerpt: "Gila Cliff Dwellings is a National Monument that preserves Mogollon cliff dwellings.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg/1920px-Gila_Cliff_Dwellings%2C_New_Mexico%2C_USA_2012.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Gila_Cliff_Dwellings_National_Monument"
+  }
 ];
+
+var historicalIcon = L.icon({
+  iconUrl: "images/historical_icon.png",
+  iconSize: [28, 28],
+  iconAnchor: [14, 14],
+  popupAnchor: [0, -12]
+});
 
 function addSites(dataArray, layerGroup) {
   for (var i = 0; i < dataArray.length; i++) {
     var feature = dataArray[i];
 
-    var marker = L.marker(feature.coords);
+    var popupContent =
+      "<strong>" + feature.name + "</strong><br>" +
+      "<p class='historical-excerpt'>" + feature.excerpt + "</p>" +
+      "<img src='" + feature.image + "' width='150px'/><br>" +
+      "<a href='" + feature.wiki + "' target='_blank'>Learn more on Wikipedia</a>";
+
+    var marker = L.marker(feature.coords, { icon: historicalIcon });
 
     marker.options.title = feature.name;
 
-    marker.bindPopup(feature.popupHtml, customOptions);
+    marker.bindPopup(popupContent, customOptions);
 
     marker.bindTooltip(feature.name, {
       direction: "top",
@@ -255,7 +313,11 @@ function addSites(dataArray, layerGroup) {
 }
 
 addSites(sites, marks);
-layerControl.addOverlay(marks, "Historical Sites");
+
+layerControl.addOverlay(
+  marks,
+  '<img src="images/historical_icon.png" class="toggle-icon">Historical Sites'
+);
 
 // boarding schools points
 var schoolIcon = L.icon({
@@ -284,7 +346,10 @@ fetch("data/schools.geojson")
       }
     }).addTo(map);
 
-    layerControl.addOverlay(schoolsLayer, "Boarding Schools");
+    layerControl.addOverlay(
+      schoolsLayer,
+      '<img src="images/school_icon.webp" class="toggle-icon">Boarding Schools'
+    );
   })
   .catch(error => console.error("Error loading schools:", error));
 
